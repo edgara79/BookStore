@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewData["Title"] = "Book Storet";
+}
+
+<h1>Book List</h1>
+
+<p>
+    @if (Model != null)
+    {
+        @*<a asp-action="Create">Create New</a>*@
+        <a asp-action="ExportToCSV">Download CSV</a>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr>
+                <td align="center" colspan="6">
+                    No books founded
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                        <tr>
+                            <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                            </td>
+                            <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                        @Html.DisplayFor(modelItem => item.Genre)
+                            </td>
+                            <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                        @Html.DisplayFor(modelItem => item.PublishDate)
+                            </td>
+                            <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                    @*<td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+                        </tr>
+            }
+        }
+    </tbody>
+</table>
